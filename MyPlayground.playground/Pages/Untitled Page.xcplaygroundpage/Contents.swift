@@ -47,27 +47,30 @@ func factorRecarv(inputNumber: Int) -> Int {
 
 factorRecarv(inputNumber: 5)
 
-//func primeNumber(inputNum: Int) -> [Int] {
-//    var result: [Int] = []
-//
-//    for i in 1...inputNum {
-//        if i > 3 {
-//            for j in 2..<i {
-//                if i % j != 0 &&  {
-//                    if !result.contains(i) {
-//                        result.append(i)
-//                    }
-//                } else {
-//                    break
-//                }
-//            }
-//        } else {
-//            result.append(i)
-//        }
-//    }
-//    return result
-//}
-//primeNumber(inputNum: 100)
+func primeNumber(inputNum: Int) -> [Int] {
+    var result: [Int] = []
+
+    for i in 1...inputNum {
+        if i > 3 {
+            var isPrime = true
+            for j in 2..<i {
+                
+                if i % j == 0 {
+                    isPrime = false
+                    break
+                }
+            }
+            if isPrime {
+                result.append(i)
+            }
+        } else {
+            result.append(i)
+        }
+    }
+    return result
+}
+
+print(primeNumber(inputNum: 100))
 
 //รับข้อมูลชื่อ นามสกุล คะแนน ฟังก์ชันจะลิสคะแนน แล้วต้องรวมคะแนน max min avg
 
