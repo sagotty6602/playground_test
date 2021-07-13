@@ -8,7 +8,7 @@ var firstBill = [FoodDetail(foodName: "Food1", foodPrice: 100), FoodDetail(foodN
 func showDetail(detailOfBill: [FoodDetail]) {
     print("======================")
     for food in detailOfBill {
-        print("\(food.foodName) : \(food.foodPrice)")
+        print("\(food.foodName) : \(String(format: "%.2f", (food.foodPrice)))")
     }
     print("======================")
     print("Service charge : ฿\(String(format: "%.2f", serviceCharge(service: detailOfBill)))")
