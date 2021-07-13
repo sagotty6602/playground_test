@@ -1,15 +1,15 @@
 import UIKit
 
-struct foodDetai {
+struct foodDetail {
     let foodName : String
     let foodPrice : Float
 }
 var test = [
-            foodDetai(foodName: "Food1", foodPrice: 100),
-            foodDetai(foodName: "Food2", foodPrice: 130),
-            foodDetai(foodName: "Food3", foodPrice: 98)
+            foodDetail(foodName: "Food1", foodPrice: 100),
+            foodDetail(foodName: "Food2", foodPrice: 130),
+            foodDetail(foodName: "Food3", foodPrice: 98)
 ]
-func showDetail(detailsOfTheResceipt: [foodDetai]) {
+func showDetail(detailsOfTheResceipt: [foodDetail]) {
     print("============================")
     for detail in detailsOfTheResceipt {
         print("\(detail.foodName) : ฿\(detail.foodPrice)")
@@ -20,25 +20,25 @@ func showDetail(detailsOfTheResceipt: [foodDetai]) {
     print("Total : ฿\(String(format: "%.2f", totalPrice(total: detailsOfTheResceipt)))")
 }
 
-func serviceCharge(detailsOfTheResceipt: [foodDetai]) -> Float{
-    var service : Float = 0
-    for price in detailsOfTheResceipt {
-        service += price.foodPrice
-    }
-    return service * 0.10
-}
-func vat(detailsOfVat: [foodDetai]) -> Float{
-    var result : Float = 0
-    for price in detailsOfVat {
+func sumPrice(sum: [foodDetail]) -> Float{
+    var result: Float = 0
+    for price in sum {
         result += price.foodPrice
     }
-    return (result * 1.10) * 0.07
+    return result
 }
-func totalPrice(total: [foodDetai]) -> Float{
-    var result : Float = 0
-    for price in total {
-        result += price.foodPrice
-    }
-    return result + (result * 0.10) + ((result * 1.10) * 0.07)
+
+func serviceCharge(detailsOfTheResceipt: [foodDetail]) -> Float{
+    return sumPrice(sum: detailsOfTheResceipt) * 0.10
 }
+
+func vat(detailsOfVat: [foodDetail]) -> Float{
+    return (sumPrice(sum: detailsOfVat) + serviceCharge(detailsOfTheResceipt: detailsOfVat)) * 0.07
+}
+
+func totalPrice(total: [foodDetail]) -> Float{
+    return sumPrice(sum: total) + serviceCharge(detailsOfTheResceipt: total) + vat(detailsOfVat: total)
+}
+
+
 showDetail(detailsOfTheResceipt: test)
