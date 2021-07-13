@@ -1,44 +1,35 @@
 import UIKit
 
-struct foodDetail {
-    let foodName : String
-    let foodPrice : Float
+struct FoodDetail {
+    let foodName: String
+    let foodPrice: Double
 }
-var test = [
-            foodDetail(foodName: "Food1", foodPrice: 100),
-            foodDetail(foodName: "Food2", foodPrice: 130),
-            foodDetail(foodName: "Food3", foodPrice: 98)
-]
-func showDetail(detailsOfTheResceipt: [foodDetail]) {
-    print("============================")
-    for detail in detailsOfTheResceipt {
-        print("\(detail.foodName) : ฿\(detail.foodPrice)")
+var firstBill = [FoodDetail(foodName: "Food1", foodPrice: 100), FoodDetail(foodName: "Food2", foodPrice: 130), FoodDetail(foodName: "Food3", foodPrice: 98)]
+func showDetail(detailOfBill: [FoodDetail]) {
+    print("======================")
+    for food in detailOfBill {
+        print("\(food.foodName) : \(food.foodPrice)")
     }
-    print("============================")
-    print("service charge 10% : ฿\(String(format: "%.2f", serviceCharge(detailsOfTheResceipt: detailsOfTheResceipt)))")
-    print("Vat 7% : ฿\(String(format: "%.2f", vat(detailsOfVat: detailsOfTheResceipt)))")
-    print("Total : ฿\(String(format: "%.2f", totalPrice(total: detailsOfTheResceipt)))")
+    print("======================")
+    print("Service charge : ฿\(String(format: "%.2f", serviceCharge(service: detailOfBill)))")
+    print("Vat 7% : ฿\(String(format: "%.2f", vat(vat: detailOfBill)))")
+    print("Total : ฿\(String(format: "%.2f", totalPrice(total: detailOfBill)))")
 }
-
-func sumPrice(sum: [foodDetail]) -> Float{
-    var result: Float = 0
-    for price in sum {
-        result += price.foodPrice
+func sumPrice(price: [FoodDetail]) -> Double {
+    var result: Double = 0
+    for food in price {
+        result += food.foodPrice
     }
     return result
 }
-
-func serviceCharge(detailsOfTheResceipt: [foodDetail]) -> Float{
-    return sumPrice(sum: detailsOfTheResceipt) * 0.10
+func serviceCharge(service: [FoodDetail]) -> Double {
+    return sumPrice(price: service) * 0.1
+}
+func vat(vat: [FoodDetail]) -> Double {
+    return (sumPrice(price: vat) + serviceCharge(service: vat)) * 0.07
+}
+func totalPrice(total: [FoodDetail]) -> Double {
+    return sumPrice(price: total) + serviceCharge(service: total) + vat(vat: total)
 }
 
-func vat(detailsOfVat: [foodDetail]) -> Float{
-    return (sumPrice(sum: detailsOfVat) + serviceCharge(detailsOfTheResceipt: detailsOfVat)) * 0.07
-}
-
-func totalPrice(total: [foodDetail]) -> Float{
-    return sumPrice(sum: total) + serviceCharge(detailsOfTheResceipt: total) + vat(detailsOfVat: total)
-}
-
-
-showDetail(detailsOfTheResceipt: test)
+showDetail(detailOfBill: firstBill)

@@ -16,4 +16,3 @@ func isPrimeNumber(num: Int) -> Bool {
     return checkPrime
 }
 isPrimeNumber(num: 6)
-

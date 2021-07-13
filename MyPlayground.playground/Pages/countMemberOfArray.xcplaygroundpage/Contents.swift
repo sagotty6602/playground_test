@@ -1,25 +1,19 @@
 import UIKit
 import Foundation
 
-
-func countMemberOfArray(numbers: [Int]) -> String {
-    var count: [Int: Int] = [:]
+func countMemberOfArr(arr: [Int]) -> String {
+    var counts: [Int: Int] = [:]
     var result: String = ""
-    for key in numbers {
-        count[key, default: 0] += 1
+    for key in arr {
+        counts[key, default: 0] += 1
     }
-    for (key, value) in count {
+    for (key, value) in counts {
         result += "Count of \(key) : \(value)\n"
     }
     return result
 }
 
-countMemberOfArray(numbers: [9, 3, 4, 5, 4, 3])
-
-
-
-
-
+countMemberOfArr(arr: [1, 2, 3, 1, 2, 4, 4, 5, 5])
 
 
 
