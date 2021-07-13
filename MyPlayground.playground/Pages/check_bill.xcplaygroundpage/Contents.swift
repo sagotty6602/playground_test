@@ -8,12 +8,12 @@ var firstBill = [FoodDetail(foodName: "Food1", foodPrice: 100), FoodDetail(foodN
 func showDetail(detailOfBill: [FoodDetail]) {
     print("======================")
     for food in detailOfBill {
-        print("\(food.foodName) : \(String(format: "%.2f", (food.foodPrice)))")
+        print("\(food.foodName) : \(formatString(num: food.foodPrice))")
     }
     print("======================")
-    print("Service charge : ฿\(String(format: "%.2f", serviceCharge(service: detailOfBill)))")
-    print("Vat 7% : ฿\(String(format: "%.2f", vat(vat: detailOfBill)))")
-    print("Total : ฿\(String(format: "%.2f", totalPrice(total: detailOfBill)))")
+    print("Service charge : ฿\(formatString(num: serviceCharge(service: detailOfBill)))")
+    print("Vat 7% : ฿\(formatString(num: vat(vat: detailOfBill)))")
+    print("Total : ฿\(formatString(num: totalPrice(total: detailOfBill)))")
 }
 func sumPrice(price: [FoodDetail]) -> Double {
     var result: Double = 0
@@ -30,6 +30,9 @@ func vat(vat: [FoodDetail]) -> Double {
 }
 func totalPrice(total: [FoodDetail]) -> Double {
     return sumPrice(price: total) + serviceCharge(service: total) + vat(vat: total)
+}
+func formatString(num: Double) -> String {
+    return String(format: "%.2f", num)
 }
 
 showDetail(detailOfBill: firstBill)
