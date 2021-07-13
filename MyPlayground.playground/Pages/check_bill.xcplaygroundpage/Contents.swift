@@ -6,11 +6,11 @@ struct FoodDetail {
 }
 var firstBill = [FoodDetail(foodName: "Food1", foodPrice: 100), FoodDetail(foodName: "Food2", foodPrice: 130), FoodDetail(foodName: "Food3", foodPrice: 98)]
 func showDetail(detailOfBill: [FoodDetail]) {
-    print("======================")
+    print(lineUp())
     for food in detailOfBill {
         print("\(food.foodName) : \(formatString(num: food.foodPrice))")
     }
-    print("======================")
+    print(lineUp())
     print("Service charge : ฿\(formatString(num: serviceCharge(service: detailOfBill)))")
     print("Vat 7% : ฿\(formatString(num: vat(vat: detailOfBill)))")
     print("Total : ฿\(formatString(num: totalPrice(total: detailOfBill)))")
@@ -33,6 +33,9 @@ func totalPrice(total: [FoodDetail]) -> Double {
 }
 func formatString(num: Double) -> String {
     return String(format: "%.2f", num)
+}
+func lineUp() -> String {
+    return "======================="
 }
 
 showDetail(detailOfBill: firstBill)
