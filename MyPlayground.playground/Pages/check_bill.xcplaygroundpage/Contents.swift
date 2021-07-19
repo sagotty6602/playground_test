@@ -15,6 +15,7 @@ func showDetail(detailOfBill: [FoodDetail]) {
     print("Vat 7% : ฿\(formatString(num: vat(vat: detailOfBill)))")
     print("Total : ฿\(formatString(num: totalPrice(total: detailOfBill)))")
 }
+
 func sumPrice(price: [FoodDetail]) -> Double {
     var result: Double = 0
     for food in price {
@@ -22,18 +23,23 @@ func sumPrice(price: [FoodDetail]) -> Double {
     }
     return result
 }
+
 func serviceCharge(service: [FoodDetail]) -> Double {
     return sumPrice(price: service) * 0.1
 }
+
 func vat(vat: [FoodDetail]) -> Double {
     return (sumPrice(price: vat) + serviceCharge(service: vat)) * 0.07
 }
+
 func totalPrice(total: [FoodDetail]) -> Double {
     return sumPrice(price: total) + serviceCharge(service: total) + vat(vat: total)
 }
+
 func formatString(num: Double) -> String {
     return String(format: "%.2f", num)
 }
+
 func lineUp() -> String {
     return "======================="
 }

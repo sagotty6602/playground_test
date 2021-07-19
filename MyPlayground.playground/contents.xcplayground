@@ -6,5 +6,6 @@
         <page name='primeNum'/>
         <page name='bubble-sort'/>
         <page name='countMemberOfArray'/>
+        <page name='countMemberOfArrayVol2'/>
     </pages>
 </playground>
