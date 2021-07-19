@@ -86,7 +86,7 @@ class Food: Product {
     }
     
     override func showProduct() {
-        print("ชื่อ \(self.productName) \(self.productType) \(self.productPrice) \(amount) \(foodType)")
+        print("ชื่อ \(self.productName) \(self.productType) \(String(format: "%.2f",(self.productPrice))) \(self.amount) \(foodType)")
     }
 }
 
