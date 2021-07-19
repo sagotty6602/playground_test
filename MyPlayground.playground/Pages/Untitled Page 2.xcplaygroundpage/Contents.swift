@@ -73,16 +73,22 @@ class Food: Product {
     
     private var foodType: FoodType
     
+//    convenience init(food: FoodType) {
+//        self.init(productName: productName, productType: productType, productPrice: productPrice, amount: amount)
+//        self.food = FoodType
+//
+//    }
+    
+    
     init(productName: String, productType: ProductType, productPrice: Double, amount: Int, foodtype: FoodType) {
         self.foodType = foodtype
         super.init(productName: productName, productType: productType, productPrice: productPrice, amount: amount)
     }
     
-    func showAll() {
-        print(showProduct(), foodType)
+    override func showProduct() {
+        print("ชื่อ \(self.productName) \(self.productType) \(self.productPrice) \(amount) \(foodType)")
     }
 }
 
 var productA = Food(productName: "McNodal", productType: .Food, productPrice: 50, amount: 50, foodtype: .HumanFood)
 productA.showProduct()
-productA.showAll()
