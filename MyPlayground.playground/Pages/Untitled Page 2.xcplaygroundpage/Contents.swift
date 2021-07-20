@@ -21,7 +21,7 @@ class Product {
     }
     
     func showProduct() {
-        print("ชื่อ \(self.productName) \(self.productType) \(self.productPrice) \(amount)")
+        print("ชื่อ \(self.productName) \(self.productType) \(String(format: "%.2f",(self.productPrice))) \(self.amount)")
     }
     
     func buyProduct(buyAmount: Int) -> Double {
@@ -82,13 +82,13 @@ class Food: Product {
     
     init(productName: String, productType: ProductType, productPrice: Double, amount: Int, foodtype: FoodType) {
         self.foodType = foodtype
-        super.init(productName: productName, productType: productType, productPrice: productPrice, amount: amount)
+        super.init(productName: productName, productType: .Food, productPrice: productPrice, amount: amount)
     }
     
     override func showProduct() {
-        print("ชื่อ \(self.productName) \(self.productType) \(String(format: "%.2f",(self.productPrice))) \(self.amount) \(foodType)")
+        print("ชื่อ \(self.productName) ราคา \(String(format: "%.2f",(self.productPrice))) จำนวนที่เหลือ \(self.amount) \(self.productType) \(foodType)")
     }
 }
 
-var productA = Food(productName: "McNodal", productType: .Food, productPrice: 50, amount: 50, foodtype: .HumanFood)
+var productA = Food(productName: "Rice", productType: .Food, productPrice: 50, amount: 12, foodtype: .HumanFood)
 productA.showProduct()
