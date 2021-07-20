@@ -10,8 +10,12 @@ class University {
         allSubject[subject] = nil
     }
     func showAllSubject() {
-        for (subject, credit) in allSubject {
-            print("วิชา \(subject) หน่วยกิต \(credit)")
+        if allSubject != [:] {
+            for (subject, credit) in allSubject {
+                print("วิชา \(subject) หน่วยกิต \(credit)")
+            }
+        } else {
+            print("คุณยังไม่ได้ลงวิชาเรียน")
         }
     }
 }
