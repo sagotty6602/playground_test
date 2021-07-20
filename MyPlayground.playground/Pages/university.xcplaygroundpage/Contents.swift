@@ -11,11 +11,17 @@ class University {
     }
     func showAllSubject() {
         if allSubject != [:] {
+            var result: Int = 0
+            print("วิชาที่คุณได้ลงทะเบียนแล้ว")
             for (subject, credit) in allSubject {
                 print("วิชา \(subject) หน่วยกิต \(credit)")
             }
+            for (_, credit) in allSubject {
+                result += credit
+            }
+            print("หน่วยกิตทั้งหมด คือ \(result)")
         } else {
-            print("คุณยังไม่ได้ลงวิชาเรียน")
+            print("คุณยังไม่ได้ลงทะเบียนในรายวิชา")
         }
     }
 }
