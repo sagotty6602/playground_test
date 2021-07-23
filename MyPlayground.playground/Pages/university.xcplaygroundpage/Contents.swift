@@ -1,6 +1,7 @@
 import UIKit
 import Foundation
 
+
 class University {
     internal var allSubject: [String: Int]
     init(subject: [String: Int] = [:]) {
@@ -9,19 +10,18 @@ class University {
     func remove(subject: String) {
         allSubject[subject] = nil
     }
-    func showAllSubject() {
+    func showAllSubject() -> String {
         if allSubject != [:] {
             var result: Int = 0
-            print("วิชาที่คุณได้ลงทะเบียนแล้ว")
             for (subject, credit) in allSubject {
-                print("วิชา \(subject) หน่วยกิต \(credit)")
+                return "วิชา \(subject) หน่วยกิต \(credit)"
             }
             for (_, credit) in allSubject {
                 result += credit
             }
-            print("หน่วยกิตทั้งหมด คือ \(result)")
+            return "หน่วยกิตทั้งหมด คือ \(result)"
         } else {
-            print("คุณยังไม่ได้ลงทะเบียนในรายวิชา")
+            return "คุณยังไม่ได้ลงทะเบียนในรายวิชา"
         }
     }
 }
@@ -30,7 +30,7 @@ class Student: University {
     init(grade: Double) {
         self.grade = grade
     }
-    func addSubject(subject: String, credit: Int) {
+    func addSubject(subject: String, credit: Int) -> String {
         var result: Int = 0
         if grade < 2.00 {
             allSubject[subject] = credit
@@ -39,9 +39,9 @@ class Student: University {
             }
             if result > 25 {
                 allSubject.removeValue(forKey: subject)
-                print("หน่วยกิตคุณมีไม่พอที่จะเพิ่มรายวิชานี้")
+                return "หน่วยกิตคุณมีไม่พอที่จะเพิ่มรายวิชานี้"
             } else {
-                print("เพิ่มรายวิชาสำเร็จ")
+                return "เพิ่มรายวิชาสำเร็จ"
             }
         } else {
             allSubject[subject] = credit
@@ -50,9 +50,9 @@ class Student: University {
             }
             if result > 35 {
                 allSubject.removeValue(forKey: subject)
-                print("หน่วยกิตคุณมีไม่พอที่จะเพิ่มรายวิชานี้")
+                return "หน่วยกิตคุณมีไม่พอที่จะเพิ่มรายวิชานี้"
             } else {
-                print("เพิ่มรายวิชาสำเร็จ")
+                return "เพิ่มรายวิชาสำเร็จ"
             }
         }
     }
