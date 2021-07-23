@@ -26,6 +26,7 @@ class University {
         }
     }
 }
+
 class Student: University {
     let grade: Double
     init(grade: Double) {
@@ -58,10 +59,11 @@ class Student: University {
         }
     }
 }
+
 var student1 = Student(grade: 2.00)
 student1.addSubject(subject: "asdf", credit: 20)
 student1.addSubject(subject: "fsffd", credit: 5)
-student1.addSubject(subject: "dsf", credit: 100)
+student1.addSubject(subject: "dsf", credit: 10)
 student1.addSubject(subject: "dddfsf", credit: 1)
 student1.showAllSubject()
 var student2 = Student(grade: 1.99)
