@@ -43,6 +43,9 @@ class Student {
         }
         return allSubject
     }
+    func removeSubject(subjectName: String) {
+        allSubject[subjectName] = nil
+    }
 }
 
 var student1 = Student(grade: 2.00)
@@ -53,4 +56,6 @@ var art =   Art(name: "Art", credit: 10)
 student1.addSubject(name: math.name, credit: math.credit)
 student1.addSubject(name: science.name, credit: science.credit)
 student1.addSubject(name: art.name, credit: art.credit)
+student1.allSubject.sorted(by: <)
+student1.removeSubject(subjectName: "Art")
 student1.allSubject.sorted(by: <)
