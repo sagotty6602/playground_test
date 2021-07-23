@@ -14,13 +14,13 @@ class University {
         if allSubject != [:] {
             var result: Int = 0
             var showResult: String = ""
-            for (subject, credit) in allSubject {
+            for (subject, credit) in allSubject.sorted(by: <) {
                 showResult += "วิชา \(subject) หน่วยกิต \(credit)\n"
             }
             for (_, credit) in allSubject {
                 result += credit
             }
-            return "\(showResult)\nหน่วยกิตทั้งหมด คือ \(result)"
+            return "\(showResult)-------------------\nหน่วยกิตทั้งหมด คือ \(result)"
         } else {
             return "คุณยังไม่ได้ลงทะเบียนในรายวิชา"
         }
@@ -64,3 +64,11 @@ student1.addSubject(subject: "fsffd", credit: 5)
 student1.addSubject(subject: "dsf", credit: 100)
 student1.addSubject(subject: "dddfsf", credit: 1)
 student1.showAllSubject()
+var student2 = Student(grade: 1.99)
+student2.addSubject(subject: "Math", credit: 10)
+student2.addSubject(subject: "Sci", credit: 10)
+student2.addSubject(subject: "Art", credit: 5)
+student2.remove(subject: "Art")
+student2.addSubject(subject: "Mac", credit: 4)
+student2.addSubject(subject: "Android", credit: 1)
+print(student2.showAllSubject())
