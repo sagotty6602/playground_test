@@ -13,13 +13,14 @@ class University {
     func showAllSubject() -> String {
         if allSubject != [:] {
             var result: Int = 0
+            var showResult: String = ""
             for (subject, credit) in allSubject {
-                return "วิชา \(subject) หน่วยกิต \(credit)"
+                showResult += "วิชา \(subject) หน่วยกิต \(credit)\n"
             }
             for (_, credit) in allSubject {
                 result += credit
             }
-            return "หน่วยกิตทั้งหมด คือ \(result)"
+            return "\(showResult)\nหน่วยกิตทั้งหมด คือ \(result)"
         } else {
             return "คุณยังไม่ได้ลงทะเบียนในรายวิชา"
         }
@@ -62,10 +63,4 @@ student1.addSubject(subject: "asdf", credit: 20)
 student1.addSubject(subject: "fsffd", credit: 5)
 student1.addSubject(subject: "dsf", credit: 100)
 student1.addSubject(subject: "dddfsf", credit: 1)
-var student2 = Student(grade: 1.99)
-student2.addSubject(subject: "wef", credit: 23)
-student2.addSubject(subject: "dsfa", credit: 5)
 student1.showAllSubject()
-student2.showAllSubject()
-var student3 = Student(grade: 4.00)
-student3.showAllSubject()
